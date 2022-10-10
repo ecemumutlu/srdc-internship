@@ -1,0 +1,58 @@
+
+<!--div class="container">
+    <p *ngIf="Message.length <= 0" class="no-data text-center">There is no message added yet!</p>
+    <h2 class="page-header" style="text-align: center;">{{ tableHeader }}</h2>
+    <table mat-table [dataSource]="dataSource" class="table table-bordered" *ngIf="Message.length > 0">
+      <thead class="table-success">
+        <tr>
+          <th scope="col">Message ID</th>
+          <th scope="col">Sender</th>
+          <th scope="col">Receiver</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Date</th>
+          <th scope="col">Message</th>
+        </tr>
+      </thead>
+        <tbody *ngIf="inboxOrOutbox() && allInboxOrInbox()">
+
+
+          <tr *ngFor="let message of Message; let i = index">
+            <th scope="row">{{message._id}}</th>
+            <td>{{message.sender}}</td>
+            <td>{{message.receiver}}</td>
+            <td>{{message.subject}}</td>
+            <td>{{message.date}}</td>
+            <td>{{message.messageContent}}</td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="inboxOrOutbox() && !allInboxOrInbox()">
+          <ng-container *ngFor="let message of Message; let i = index">
+            <tr *ngIf="message.receiver === this.user['username']">
+              <th scope="row">{{message._id}}</th>
+              <td>{{message.sender}}</td>
+              <td>{{message.receiver}}</td>
+              <td>{{message.subject}}</td>
+              <td>{{message.date}}</td>
+              <td>{{message.messageContent}}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+        <tbody *ngIf="!inboxOrOutbox()" >
+          <ng-container *ngFor="let message of Message; let i = index"  >
+            <tr *ngIf="message.sender === this.user['username']">
+              <th  scope="row">{{message._id}}</th>
+              <td >{{message.sender}}</td>
+              <td >{{message.receiver}}</td>
+              <td >{{message.subject}}</td>
+              <td >{{message.date}}</td>
+              <td >{{message.messageContent}}</td>
+            </tr>
+
+          </ng-container>
+        </tbody>
+    </table>
+
+    <mat-paginator #paginator [length]="100" [pageSizeOptions]="[3,5,10]" aria-label="select page">
+
+    </mat-paginator>
+  </div-->

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="#" />
+
+    <style>
+        input[type=button] {
+            background-color: #8e44ad;
+            border: 2px solid #f0f0f0;
+            border-radius: 4px;
+            color: #fff;
+            display: block;
+            font-family: inherit;
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+
+    <script src="Client.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>Login</h2>
+    </div>
+
+    <form class="form" id="form">
+        <div class="form-control">
+            <label>Username</label>
+            <input type="text" placeholder="username" id="username" required="required">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+        <div class="form-control">
+            <label>password</label>
+            <input type="password" placeholder="password" id="password" required="required">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+
+
+
+        <input type="button" value="Sign in" onclick="soapRequestLogin(getUsername(),getPassword());"/>
+        <p id="systemMessage"></p>
+
+
+
+    </form>
+</div>
+</body>
+</html>

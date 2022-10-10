@@ -1,0 +1,24 @@
+<div class="jumbotron text-center">
+  <h1>Admin Operations</h1>
+  <p class="lead">Welcome to the admin page</p>
+  <div clas="menu">
+
+
+    <ul>
+      <a class="btn btn-primary" style="text-align: center;" routerLink="/users-list">Users</a>
+
+      <a class="btn btn-primary" style="text-align: center;" routerLinkActive="active" [routerLink]="['/user.route/msg-list',1]" *ngIf = "(!authService.loggedIn() && authService.isAdmin())">All messages</a>
+
+      <a class="btn btn-primary" style="text-align: center;" routerLinkActive="active" [routerLink]="['/create-message']" *ngIf = "(!authService.loggedIn() && authService.isAdmin())">create message</a>
+
+      <a class="btn btn-primary" style="text-align: center;" routerLinkActive="active" [routerLink]="['/user.route/msg-list',2]" *ngIf = "(!authService.loggedIn() && authService.isAdmin())">Inbox</a>
+
+      <a class="btn btn-primary" style="text-align: center;" routerLinkActive="active" [routerLink]="['/user.route/msg-list',3]" *ngIf = "(!authService.loggedIn() && authService.isAdmin())">Outbox</a>
+
+      <a class="btn btn-primary" style="text-align: center;" routerLinkActive="active" [routerLink]="['/get-activities']" *ngIf = "(!authService.loggedIn() && authService.isAdmin())">User Activity</a>
+
+
+
+    </ul>
+  </div>
+</div>

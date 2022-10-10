@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="#" />
+
+    <style>
+        input[type=button] {
+            background-color: #8e44ad;
+            border: 2px solid #f0f0f0;
+            border-radius: 4px;
+            color: #fff;
+            display: block;
+            font-family: inherit;
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+        }
+
+    </style>
+</head>
+
+<body onload="soapRequestLogin()">
+ <!--todo: admin kendini silemesin-->
+ <!--todo: admin başka kullanıcıyı silince logout olsun sistemden atsın-->
+
+ <div class="container">
+    <div class="header">
+        <h2>Operations</h2>
+    </div>
+
+
+    <input type="button" value="See own info" onclick="soapRequestSeeOwnInfo();"/>
+    <input type="button" value="Update User" onclick="updateUserButton();"/>
+    <input type="button" value="Send Message" onclick="sendMessageButton();"/>
+    <input type="button" value="Read Message" onclick="readMessageButton();"/>
+    <input type="button" value="Outbox" onclick="soapRequestOutbox();"/>
+    <input type="button" value="Inbox" onclick="soapRequestInbox();"/>
+    <input type="button" value="Logout" onclick="soapRequestLogout();"/>
+
+    <p id="hiddenVal" style="display: none">No info yet.</p>
+
+     <div class="container" style="display: none" id="updateUserPage" onload="">
+        <div class="header">
+            <h2 style="align-items: center;">Update User</h2>
+        </div>
+
+        <form class="form" id="formUpdateUser">
+            <div class="form-control">
+                <label for="featureUpdate">Which feature do you want to change?</label>
+                <select name="features" id="featureUpdate">
+                    <option value="name">name</option>
+                    <option value="surname">surname</option>
+                    <option value="password">password</option>
+                    <option value="gender">gender</option>
+                    <option value="email">email</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label>Provide new information.</label>
+                <input type="text" placeholder="new information" id="new_info">
+            </div>
+
+            <input type="button" value="Update User" onclick="soapRequestUpdateUser();"/>
+            <input type="button" value="Cancel" onclick="cancelUpdate();"/>
+        </form>
+    </div>
+
+    <div class="container" style="display: none" id="sendMessagePage">
+        <div class="header">
+            <h2 style="align-items: center;">Send Message</h2>
+        </div>
+
+        <form class="form" id="formSendMessage">
+            <div class="form-control">
+                <label>Receiver</label>
+                <input type="text" placeholder="receiver" id="receiverSendMsg">
+            </div>
+            <div class="form-control">
+                <label>Subject</label>
+                <input type="text" placeholder="subject" id="subjectSendMsg">
+            </div>
+            <div class="form-control">
+                <label>Message</label>
+                <input type="text" placeholder="message" id="messageSendMsg">
+            </div>
+
+            <input type="button" value="Send Message" onclick="soapRequestSendMessage();"/>
+            <input type="button" value="Cancel" onclick="cancelSendMsg();"/>
+        </form>
+    </div>
+
+    <div class="container" style="display: none" id="readMessagePage">
+        <div class="header">
+            <h2 style="align-items: center;">Read Message</h2>
+        </div>
+
+        <form class="form" id="formReadMessage">
+            <div class="form-control">
+                <label>Provide message ID you want to read.</label>
+                <input type="text" placeholder="message ID" id="messageIDReadMsg">
+            </div>
+
+            <input type="button" value="Read Message" onclick="soapRequestReadMessage();"/>
+            <input type="button" value="Cancel" onclick="cancelReadMsg();"/>
+
+        </form>
+    </div>
+
+</div>
+
+
+
+ <script type="text/javascript">
+     window.addEventListener('beforeunload', function (e) {
+         soapRequestLogout();
+     });
+
+     window.addEventListener('unload', function (e) {
+         soapRequestLogout();
+     });
+
+ </script>
+
+
+ <script src="user.js"></script>
+
+ <div class="container">
+     <div class="header">
+         <h2>Response</h2>
+     </div>
+     <p id="allInfo">All information about the user will be displayed here.</p>
+ </div>
+
+</body>
+
+
+</html>

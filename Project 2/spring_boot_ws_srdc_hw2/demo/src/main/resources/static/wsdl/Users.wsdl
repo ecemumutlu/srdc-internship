@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://spring_boot_ws_srdc_hw2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://spring_boot_ws_srdc_hw2" targetNamespace="http://spring_boot_ws_srdc_hw2">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://spring_boot_ws_srdc_hw2">
+
+
+            <xs:element name="getUserInfoRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getUserInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="user" type="tns:userType"/>
+                        <xs:element name="systemMessage" type="tns:systemMessageType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+            <xs:element name="getReadMessageRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="messageId" type="xs:int"/>
+                        <xs:element name="username" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getReadMessageResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="message" type="tns:messageType"/>
+                        <xs:element name="systemMessage" type="tns:systemMessageType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+            <xs:element name="getSendMessageRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="sender" type="xs:string"/>
+                        <xs:element name="receiver" type="xs:string"/>
+                        <xs:element name="subject" type="xs:string"/>
+                        <xs:element name="message" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getSendMessageResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="systemMessage" type="tns:systemMessageType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getInboxRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="username" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getInboxResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="inboxSize" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" name="messageList" type="tns:boxReturn"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+            <xs:element name="getOutboxRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="username" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getOutboxResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="outboxSize" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" name="messageList" type="tns:boxReturn"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+            <xs:element name="getUpdateMessageRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="messageId" type="xs:int"/>
+                        <xs:element name="messageContent" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getUpdateMessageResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="systemMessage" type="tns:systemMessageType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+            <xs:element name="getUpdateUserRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="userId" type="xs:int"/>
+                        <xs:element name="what" type="xs:string"/>
+                        <xs:element name="new_info" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getUpdateUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="systemMessage" type="tns:systemMessageType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+
+            <xs:element name="getSeeAllInboxRequest">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getSeeAllInboxResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="inboxSize" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" name="messageList" type="tns:boxReturn"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+
+
+            <xs:element name="getSeeAllUsersRequest">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getSeeAllUsersResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="userList" type="tns:userType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+            <xs:element name="getDeleteUserRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getDeleteUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="systemMessage" type="tns:systemMessageType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+            <xs:element name="getCreateUserRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="userType" type="xs:string"/>
+                        <xs:element name="username" type="xs:string"/>
+                        <xs:element name="password" type="xs:string"/>
+                        <xs:element name="name" type="xs:string"/>
+                        <xs:element name="surname" type="xs:string"/>
+                        <xs:element name="birthdate" type="xs:date"/>
+                        <xs:element name="gender">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="male"/>
+                                    <xs:enumeration value="female"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="email" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="getCreateUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="systemMessage" type="tns:systemMessageType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+            <xs:simpleType name="systemMessageType">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Operation successful."/>
+                    <xs:enumeration value="Operation failed."/>
+                    <xs:enumeration value="Something went wrong."/>
+                    <xs:enumeration value="No such user."/>
+                    <xs:enumeration value="Invalid message ID for user."/>
+                </xs:restriction>
+            </xs:simpleType>
+
+
+            <xs:complexType name="userType">
+                <xs:sequence>
+                    <xs:element name="userId" type="xs:int"/>
+                    <xs:element name="userType" type="xs:string"/>
+                    <xs:element name="username" type="xs:string"/>
+                    <xs:element name="password" type="xs:string"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="surname" type="xs:string"/>
+                    <xs:element name="birthdate" type="xs:date"/>
+                    <xs:element name="gender">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="male"/>
+                                <xs:enumeration value="female"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="email" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="messageType">
+                <xs:sequence>
+                    <xs:element name="messageId" type="xs:int"/>
+                    <xs:element name="sender" type="xs:string"/>
+                    <xs:element name="receiver" type="xs:string"/>
+                    <xs:element name="subject" type="xs:string"/>
+                    <xs:element name="date" type="xs:string"/>
+                    <xs:element name="messageContent" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+
+
+            <xs:complexType name="boxReturn">
+                <xs:sequence>
+                    <xs:element name="messageId" type="xs:int"/>
+                    <xs:element name="sender" type="xs:string"/>
+                    <xs:element name="receiver" type="xs:string"/>
+                    <xs:element name="subject" type="xs:string"/>
+                    <xs:element name="date" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+
+
+
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getSeeAllUsersResponse">
+        <wsdl:part element="tns:getSeeAllUsersResponse" name="getSeeAllUsersResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOutboxRequest">
+        <wsdl:part element="tns:getOutboxRequest" name="getOutboxRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUpdateMessageResponse">
+        <wsdl:part element="tns:getUpdateMessageResponse" name="getUpdateMessageResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getSeeAllInboxRequest">
+        <wsdl:part element="tns:getSeeAllInboxRequest" name="getSeeAllInboxRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getSendMessageResponse">
+        <wsdl:part element="tns:getSendMessageResponse" name="getSendMessageResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getReadMessageRequest">
+        <wsdl:part element="tns:getReadMessageRequest" name="getReadMessageRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getDeleteUserResponse">
+        <wsdl:part element="tns:getDeleteUserResponse" name="getDeleteUserResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUserInfoRequest">
+        <wsdl:part element="tns:getUserInfoRequest" name="getUserInfoRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUserInfoResponse">
+        <wsdl:part element="tns:getUserInfoResponse" name="getUserInfoResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getInboxRequest">
+        <wsdl:part element="tns:getInboxRequest" name="getInboxRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getInboxResponse">
+        <wsdl:part element="tns:getInboxResponse" name="getInboxResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUpdateUserResponse">
+        <wsdl:part element="tns:getUpdateUserResponse" name="getUpdateUserResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getSendMessageRequest">
+        <wsdl:part element="tns:getSendMessageRequest" name="getSendMessageRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getSeeAllInboxResponse">
+        <wsdl:part element="tns:getSeeAllInboxResponse" name="getSeeAllInboxResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUpdateUserRequest">
+        <wsdl:part element="tns:getUpdateUserRequest" name="getUpdateUserRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCreateUserResponse">
+        <wsdl:part element="tns:getCreateUserResponse" name="getCreateUserResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getSeeAllUsersRequest">
+        <wsdl:part element="tns:getSeeAllUsersRequest" name="getSeeAllUsersRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCreateUserRequest">
+        <wsdl:part element="tns:getCreateUserRequest" name="getCreateUserRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOutboxResponse">
+        <wsdl:part element="tns:getOutboxResponse" name="getOutboxResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUpdateMessageRequest">
+        <wsdl:part element="tns:getUpdateMessageRequest" name="getUpdateMessageRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getReadMessageResponse">
+        <wsdl:part element="tns:getReadMessageResponse" name="getReadMessageResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getDeleteUserRequest">
+        <wsdl:part element="tns:getDeleteUserRequest" name="getDeleteUserRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="UsersPort">
+        <wsdl:operation name="getSeeAllUsers">
+            <wsdl:input message="tns:getSeeAllUsersRequest" name="getSeeAllUsersRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getSeeAllUsersResponse" name="getSeeAllUsersResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOutbox">
+            <wsdl:input message="tns:getOutboxRequest" name="getOutboxRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getOutboxResponse" name="getOutboxResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUpdateMessage">
+            <wsdl:input message="tns:getUpdateMessageRequest" name="getUpdateMessageRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getUpdateMessageResponse" name="getUpdateMessageResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSeeAllInbox">
+            <wsdl:input message="tns:getSeeAllInboxRequest" name="getSeeAllInboxRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getSeeAllInboxResponse" name="getSeeAllInboxResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSendMessage">
+            <wsdl:input message="tns:getSendMessageRequest" name="getSendMessageRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getSendMessageResponse" name="getSendMessageResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getReadMessage">
+            <wsdl:input message="tns:getReadMessageRequest" name="getReadMessageRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getReadMessageResponse" name="getReadMessageResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDeleteUser">
+            <wsdl:input message="tns:getDeleteUserRequest" name="getDeleteUserRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getDeleteUserResponse" name="getDeleteUserResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserInfo">
+            <wsdl:input message="tns:getUserInfoRequest" name="getUserInfoRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getUserInfoResponse" name="getUserInfoResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInbox">
+            <wsdl:input message="tns:getInboxRequest" name="getInboxRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getInboxResponse" name="getInboxResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUpdateUser">
+            <wsdl:input message="tns:getUpdateUserRequest" name="getUpdateUserRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getUpdateUserResponse" name="getUpdateUserResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCreateUser">
+            <wsdl:input message="tns:getCreateUserRequest" name="getCreateUserRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getCreateUserResponse" name="getCreateUserResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="UsersPortSoap11" type="tns:UsersPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getSeeAllUsers">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getSeeAllUsersRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getSeeAllUsersResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOutbox">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getOutboxRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getOutboxResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUpdateMessage">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getUpdateMessageRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getUpdateMessageResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSeeAllInbox">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getSeeAllInboxRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getSeeAllInboxResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSendMessage">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getSendMessageRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getSendMessageResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getReadMessage">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getReadMessageRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getReadMessageResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDeleteUser">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getDeleteUserRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getDeleteUserResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserInfo">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getUserInfoRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getUserInfoResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInbox">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getInboxRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getInboxResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUpdateUser">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getUpdateUserRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getUpdateUserResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCreateUser">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getCreateUserRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getCreateUserResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="UsersPortService">
+        <wsdl:port binding="tns:UsersPortSoap11" name="UsersPortSoap11">
+            <soap:address location="http://localhost:8080/ws"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

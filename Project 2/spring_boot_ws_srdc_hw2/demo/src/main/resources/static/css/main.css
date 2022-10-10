@@ -1,0 +1,279 @@
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+/*
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Montserrat';
+    background: #EEEEEE;
+    font-size: 18px;
+    height: 100vh;
+}
+
+.container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.logo {
+    width: 120px;
+}
+
+h1 {
+    margin: 1em 0;
+}
+
+p {
+    line-height: 1.7rem;
+}
+
+.left {
+    background: linear-gradient(160deg, #601df7 0%, #8800ff 100%);
+    padding: 1em;
+}
+
+p, h1 {
+    color: white;
+}
+
+
+.right p {
+    margin: 2em 0 1em;
+}
+
+.light {
+    color: rgba(255,255,255,.7) !important;
+    margin-top: 2em;
+}
+input, button {
+    width: calc(100% - 3em);
+    padding: .5em;
+    font-size: 1.3rem;
+    outline: none;
+    margin: 1em;
+}
+
+button {
+    width: calc(100% - 2em);
+    margin: 0;
+    background: #8800ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+.attention {
+    width: 100%;
+    margin: .5em auto 0;
+    text-align: center;
+}
+
+.me {
+    margin-top: 2em;
+    width: 3em;
+    border-radius: 50%;
+}
+
+.arrow {
+    width: 15em;
+}
+
+
+@media only screen and (min-width: 768px) {
+    body {
+        font-size: 20px;
+    }
+
+    button {
+        width: 60% !important;
+    }
+
+    input {
+        width: calc(60% - 1em) !important;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .logo {
+        margin: 1em 0;
+    }
+
+    p {
+        line-height: 1.7em !important;
+    }
+
+    .inner {
+        display: grid;
+        grid-template-columns: 55% auto;
+    }
+
+    .left {
+        text-align: left;
+        padding: 0 2em;
+        height: 100vh;
+        display: grid;
+    }
+
+    .content {
+        padding: 0 3em;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2.4em;
+    }
+
+    span {
+        display: block;
+    }
+}
+
+
+.right {
+    text-align: right;
+    align-self: center;
+    padding: 0 2em 1.5em;
+    justify-self: center;
+}
+
+input {
+    width: 100% !important;
+    margin: 1em 0;
+}
+
+button {
+    width: 100% !important;
+}
+
+.proto-container {
+    clip-path: inset(0 45% 0 0);
+    position: absolute;
+    top: 20%;
+    height: 70%;
+    z-index: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.proto {
+    border: 3px solid rgba(255,255,255,.1);
+    width: 19%;
+    height: 80%;
+    float: left;
+    margin-left: 1em;
+    transform: translateX(10%);
+}
+
+
+
+@media only screen and (min-width: 1600px) {
+    body {
+        font-size: 22px;
+    }
+
+    .content {
+        padding: 0 6em !important;
+    }
+
+    .right {
+        padding: 0 !important;
+    }
+}
+
+ */
+
+*{
+   box-sizing: border-box;
+}
+
+body{
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    width: 400px;
+    max-width: 100%;
+}
+
+.header{
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 40px;
+}
+
+.form{
+    padding: 30px 40px;
+}
+
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-control i{
+    position: absolute;
+    top: 40px;
+    right: 10px;
+}
+
+.form-control.success i.fa-check-circle{
+    color: #2ecc71;
+    visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle{
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.form-control small{
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.form button{
+    background-color: #8e44ad;
+    border: 2px solid #8e44ad;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+}
+
+

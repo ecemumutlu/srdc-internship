@@ -1,0 +1,17 @@
+<div class="jumbotron text-center">
+  <h1>User Operations</h1>
+  <p class="lead">Welcome to the user page</p>
+  <div clas="menu">
+
+
+    <ul>
+
+      <a class="btn btn-primary" style="text-align: center;" routerLinkActive="active" [routerLink]="['/user.route/msg-list',2]" *ngIf = "(!authService.loggedIn() && !authService.isAdmin())">Inbox</a>
+
+      <a class="btn btn-primary" style="text-align: center;" routerLinkActive="active" [routerLink]="['/user.route/msg-list',3]" *ngIf = "(!authService.loggedIn() && !authService.isAdmin())">Outbox</a>
+
+      <a class="btn btn-primary" style="text-align: center;" routerLinkActive="active" routerLink="/create-message" *ngIf = "(!authService.loggedIn())">Send message</a>
+
+    </ul>
+  </div>
+</div>

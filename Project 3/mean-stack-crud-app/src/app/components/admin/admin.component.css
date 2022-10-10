@@ -1,0 +1,21 @@
+ul {
+
+  list-style-type:none;
+  margin:2px 0;
+}
+ul a{
+
+  text-decoration:none;
+  border:1px solid white;
+  background-color: skyblue;
+
+}
+.menu {
+  position: absolute;
+  width: 200px;
+  height: 100% !important;
+  min-height: 100% !important;
+  background-color: #627F5F;
+  float: left;
+  padding: 20px;
+}

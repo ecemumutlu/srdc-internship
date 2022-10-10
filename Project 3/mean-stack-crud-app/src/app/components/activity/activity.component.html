@@ -1,0 +1,55 @@
+
+<h1 style="text-align: center; font-family:Arial, Helvetica, sans-serif"></h1>
+
+  <div class="example-container mat-elevation-z3">
+    <h2 class="page-header" style="text-align: center;">{{ tableHeader }}</h2>
+
+    <table mat-table #table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+      <!--ng-container matColumnDef="_id">
+          <th style="text-align: center; font-family:Arial, Helvetica, sans-serif" mat-header-cell *matHeaderCellDef mat-sort-header>Activity ID</th>
+          <td mat-cell *matCellDef="let element">{{ element._id }}</td>
+      </!--ng-container-->
+      <ng-container matColumnDef="userId">
+        <th style="text-align: center; font-family:Arial, Helvetica, sans-serif" mat-header-cell *matHeaderCellDef mat-sort-header>User ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.userId }}</td>
+      </ng-container>
+      <ng-container matColumnDef="username">
+        <th style="text-align: center; font-family:Arial, Helvetica, sans-serif" mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+        <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+      </ng-container>
+      <ng-container matColumnDef="operation">
+        <th style="text-align: center; font-family:Arial, Helvetica, sans-serif" mat-header-cell *matHeaderCellDef mat-sort-header>Operation</th>
+        <td mat-cell *matCellDef="let element">{{ element.operation }}</td>
+      </ng-container>
+      <ng-container matColumnDef="date">
+        <th style="text-align: center; font-family:Arial, Helvetica, sans-serif" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th style="text-align: center; font-family:Arial, Helvetica, sans-serif" mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+
+
+    </table>
+
+
+    <mat-paginator  #paginator [length]="100" [pageSizeOptions]="[3,5,10]" [pageSize]="limitParam"  (page)="onPaginateChange($event)"   aria-label="select page" >
+
+    </mat-paginator>
+
+    <div class="pageIndex" >
+      <p>{{starting}} - {{ending}} of {{size}}</p>
+    </div>
+
+    <div class="keys">
+      <button type="button" class="btn btn-pre" (click)="indexBtn(-1)">Previous</button>
+      <button type="button" class="btn btn-next" (click)="indexBtn(1)">Next</button>
+    </div>
+
+
+  </div>
